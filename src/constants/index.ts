@@ -1,20 +1,11 @@
 /**
  * API endpoints
+ * Example: AUTH: {
+ *    LOGIN: "/login",
+ *    ..///
+ * }
  */
-export const API_ENDPOINTS = {
-  AUTH: {
-    LOGIN: "/login",
-    LOGOUT: "/logout",
-    REFRESH: "/refresh",
-    VALIDATE: "/auth/validate", // Added validation endpoint
-    FORGOT_PASSWORD: "/forgot-password",
-    RESET_PASSWORD: "/reset-password",
-  },
-  USER: {
-    PROFILE: "/user/profile", // Updated to match actual API route
-    UPDATE_PROFILE: "/profile/update",
-  },
-};
+export const API_ENDPOINTS = {};
 
 /**
  * Cookie names
@@ -63,7 +54,7 @@ export const REGEX = {
 export const PAGINATION = {
   DEFAULT_PAGE: 1,
   DEFAULT_PER_PAGE: 10,
-  PER_PAGE_OPTIONS: [10, 25, 50, 100],
+  PER_PAGE_OPTIONS: [10, 25, 50, 100, 200, 500],
 };
 
 /**
