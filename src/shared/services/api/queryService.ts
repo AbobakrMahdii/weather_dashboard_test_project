@@ -82,7 +82,12 @@ export function useApiQuery<TData = unknown>(
       });
       return ResponseHandler.process(response);
     } catch (error) {
-      throw ErrorHandler.handle(error);
+      const errorResponse = ErrorHandler.handle(error);
+      // Convert ErrorResponse to Error object so TanStack Query can handle it properly
+      const err = new Error(errorResponse.message) as Error &
+        typeof errorResponse;
+      Object.assign(err, errorResponse);
+      throw err;
     }
   };
 
@@ -124,7 +129,12 @@ export function useApiQueryWithParams<
       );
       return ResponseHandler.process(response);
     } catch (error) {
-      throw ErrorHandler.handle(error);
+      const errorResponse = ErrorHandler.handle(error);
+      // Convert ErrorResponse to Error object so TanStack Query can handle it properly
+      const err = new Error(errorResponse.message) as Error &
+        typeof errorResponse;
+      Object.assign(err, errorResponse);
+      throw err;
     }
   };
 
@@ -192,7 +202,12 @@ export function useApiMutation<TData = unknown, TVariables = unknown>(
 
       return ResponseHandler.process(response);
     } catch (error) {
-      throw ErrorHandler.handle(error);
+      const errorResponse = ErrorHandler.handle(error);
+      // Convert ErrorResponse to Error object so TanStack Query can handle it properly
+      const err = new Error(errorResponse.message) as Error &
+        typeof errorResponse;
+      Object.assign(err, errorResponse);
+      throw err;
     }
   };
 
@@ -261,7 +276,12 @@ export function useDirectApiCall<TData = unknown, TVariables = unknown>(
 
       return ResponseHandler.process(response);
     } catch (error) {
-      throw ErrorHandler.handle(error);
+      const errorResponse = ErrorHandler.handle(error);
+      // Convert ErrorResponse to Error object so TanStack Query can handle it properly
+      const err = new Error(errorResponse.message) as Error &
+        typeof errorResponse;
+      Object.assign(err, errorResponse);
+      throw err;
     }
   };
 
