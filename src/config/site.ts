@@ -17,7 +17,10 @@ export const siteConfig = {
   secretKey: process.env.NEXT_PUBLIC_ENCRYPTION_KEY || generateSecureKey(),
   defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || "en",
   defaultTheme: process.env.NEXT_PUBLIC_DEFAULT_THEME || "light",
-  locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(",") || [],
+  locales:
+    process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(",").map((locale) =>
+      locale.trim()
+    ) || [],
   defaultTimeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "Asia/Aden",
   defaultEndpointType:
     (process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT == "app_api"

@@ -1,12 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { authReducer } from "@/features/auth";
 import uiReducer from "./slices/ui-slice";
 
 // Define the root reducer with all slice reducers
 const rootReducer = combineReducers({
-  auth: authReducer,
   ui: uiReducer,
-  // Add more reducers here
+  // TODO: More reducers here
 });
 
 // Create the store with configuration
