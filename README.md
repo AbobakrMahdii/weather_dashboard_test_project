@@ -167,7 +167,3 @@ This template supports both English and Arabic languages, with automatic RTL/LTR
 ## Authentication
 
 Authentication is handled with secure HTTPOnly cookies, compatible with both client and server components.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
