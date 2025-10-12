@@ -29,18 +29,10 @@ export const COOKIE_NAMES = {
 
 /**
  * Routes
+ * Example: HOME: "/"
  */
 export const ROUTES = {
   HOME: "/",
-  AUTH: "/auth",
-  LOGIN: "/auth/login",
-  LOGOUT: "/auth/logout",
-  REGISTER: "/auth/register",
-  FORGOT_PASSWORD: "/auth/forgot-password",
-  RESET_PASSWORD: "/auth/reset-password",
-  DASHBOARD: "/dashboard",
-  PROFILE: "/profile",
-  SETTINGS: "/settings",
 };
 
 /**

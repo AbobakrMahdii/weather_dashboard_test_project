@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ThemeSwitcher } from "@/components/ui/theme-switcher";
+import { ThemeSwitcher } from "@/shared/components/ui/theme-switcher";
 import { useTranslations } from "next-intl";
-import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { appRoutes } from "@/routes";
+import { LanguageSwitcher } from "@/shared/components/ui/language-switcher";
+import { appRoutes } from "@/shared/routes";
 
 export default function Home() {
   const t = useTranslations("common");

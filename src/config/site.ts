@@ -1,4 +1,4 @@
-import { EndpointType } from "@/types";
+import { EndpointType } from "@/shared/types";
 
 // Function to generate a more secure default key if none is provided
 const generateSecureKey = () => {
@@ -15,11 +15,14 @@ export const siteConfig = {
   apiVersion: process.env.NEXT_PUBLIC_API_VERSION || "v1",
   apiMainPath: process.env.NEXT_PUBLIC_API_MAIN_PATH || "api",
   secretKey: process.env.NEXT_PUBLIC_ENCRYPTION_KEY || generateSecureKey(),
-  defaultLocale: "ar",
-  defaultTheme: "light",
-  locales: ["ar", "en"],
-  defaultTimeZone: "Asia/Aden",
-  defaultEndpointType: EndpointType.DIRECT_API,
+  defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || "en",
+  defaultTheme: process.env.NEXT_PUBLIC_DEFAULT_THEME || "light",
+  locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(",") || [],
+  defaultTimeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "Asia/Aden",
+  defaultEndpointType:
+    (process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT == "app_api"
+      ? EndpointType.APP_API
+      : EndpointType.DIRECT_API) ?? EndpointType.DIRECT_API,
 } as const;
 
 export type SiteConfig = typeof siteConfig;

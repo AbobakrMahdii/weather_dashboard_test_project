@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { siteConfig } from "./config/site";
 import { COOKIE_NAMES, QUERY_STATE_MANAGERS } from "./constants";
-import { routeUtils } from "./routes";
+import { routeUtils } from "./shared/routes";
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;

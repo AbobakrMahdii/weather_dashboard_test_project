@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
 import { getMessages, getLocale } from "next-intl/server";
-import { AppProviders } from "@/providers/app-providers";
+import { AppProviders } from "@/shared/providers/app-providers";
 import { siteConfig } from "@/config/site";
-import { NetworkStatusIndicator } from "@/components/ui/network-status-indicator";
+import { NetworkStatusIndicator } from "@/shared/components/ui/network-status-indicator";
 import { Metadata } from "next";
-import { Direction } from "@/types";
+import { Direction } from "@/shared/types";
 
 export const dynamic = "force-dynamic";
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { appRoutes } from "@/routes";
+import { appRoutes } from "@/shared/routes";
 
 export default function NotFound() {
   return (
