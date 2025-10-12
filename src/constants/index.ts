@@ -5,7 +5,13 @@
  *    ..///
  * }
  */
-export const API_ENDPOINTS = {};
+export const API_ENDPOINTS = {
+  WEATHER: {
+    CURRENT: "/current.json",
+    FORECAST: "/forecast.json",
+    SEARCH: "/search.json",
+  },
+};
 
 /**
  * Cookie names
@@ -16,6 +22,8 @@ export const COOKIE_NAMES = {
   LOCALE: "NEXT_LOCALE",
   THEME: "site-theme",
   USER_DATA: "user-data",
+  TEMPERATURE_UNIT: "temperature-unit", // For weather app
+  RECENT_SEARCHES: "recent-weather-searches", // For weather app
 };
 
 /**
@@ -24,6 +32,7 @@ export const COOKIE_NAMES = {
  */
 export const ROUTES = {
   HOME: "/",
+  WEATHER: "/weather",
 };
 
 /**
@@ -36,6 +45,7 @@ export const TIMINGS = {
   NOTIFICATION_DISPLAY: 5000, // 5 seconds
   ANIMATION_FADE: 500, // 500 milliseconds
   NETWORK_STATUS_TRANSITION: 2000, // 500 milliseconds
+  WEATHER_CACHE_TIME: 10 * 60 * 1000, // 10 minutes - Weather data cache
 };
 
 /**
@@ -82,6 +92,7 @@ export const CSS_CLASSES = {
 
 export const QUERY_STATE_MANAGERS = {
   CALLBACK_URL: "callbackUrl",
+  API_KEY_VALUE: "key",
 };
 
 /**

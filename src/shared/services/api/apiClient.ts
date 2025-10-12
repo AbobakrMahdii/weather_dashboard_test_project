@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { siteConfig } from "@/config/site";
 import { getCookie } from "@/shared/lib/cookie";
-import { COOKIE_NAMES } from "@/constants";
+import { COOKIE_NAMES, QUERY_STATE_MANAGERS } from "@/constants";
 import { EndpointType } from "@/shared/types";
 
 // Create a function to determine the base URL based on the endpoint type
@@ -10,6 +10,9 @@ const getBaseUrl = (endpointType: EndpointType): string => {
     case EndpointType.APP_API:
       return `/${siteConfig.apiMainPath}`;
     case EndpointType.DIRECT_API:
+      return `${siteConfig.apiBaseUrl}/${
+        siteConfig.apiMainPath ? `${siteConfig.apiMainPath}/` : ""
+      }${siteConfig.apiVersion}`;
     default:
       return `${siteConfig.apiBaseUrl}/${siteConfig.apiMainPath}/${siteConfig.apiVersion}`;
   }
@@ -43,6 +46,20 @@ const createAxiosInstance = (
 
       if (token) {
         config.headers.Authorization = token;
+      }
+
+      // Automatically inject API key as query parameter for DIRECT_API calls
+      // This makes the API key reusable across different APIs that use query params
+      if (
+        endpointType === EndpointType.DIRECT_API &&
+        siteConfig.apiKey != null &&
+        siteConfig.apiKey != undefined &&
+        siteConfig.apiKey.length > 0
+      ) {
+        config.params = {
+          ...config.params,
+          [QUERY_STATE_MANAGERS.API_KEY_VALUE]: siteConfig.apiKey, // WeatherAPI.com uses 'key' parameter
+        };
       }
 
       return config;

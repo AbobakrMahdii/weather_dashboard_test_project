@@ -6,14 +6,29 @@ const generateSecureKey = () => {
   return "secure_default_key_" + new Date().getTime().toString();
 };
 
-export const siteConfig = {
-  name: process.env.NEXT_PUBLIC_APP_NAME || "Startup Template",
-  description:
-    "A professional Next.js starter template with advanced architecture",
+export const siteConfig: {
+  name: string;
+  description: string;
+  apiKey?: string;
+  url: string;
+  apiBaseUrl: string;
+  apiVersion: string;
+  apiMainPath?: string;
+  secretKey: string;
+  defaultLocale: string;
+  defaultTheme: string;
+  locales: string[];
+  defaultTimeZone: string;
+  defaultEndpointType: EndpointType;
+} = {
+  name: process.env.NEXT_PUBLIC_APP_NAME || "Weather Dashboard",
+  description: "A weather dashboard application",
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
   url: process.env.NEXT_PUBLIC_APP_URL || "https://startub_template.com",
-  apiBaseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
+  apiBaseUrl:
+    process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.weatherapi.com",
   apiVersion: process.env.NEXT_PUBLIC_API_VERSION || "v1",
-  apiMainPath: process.env.NEXT_PUBLIC_API_MAIN_PATH || "api",
+  apiMainPath: process.env.NEXT_PUBLIC_API_MAIN_PATH,
   secretKey: process.env.NEXT_PUBLIC_ENCRYPTION_KEY || generateSecureKey(),
   defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || "en",
   defaultTheme: process.env.NEXT_PUBLIC_DEFAULT_THEME || "light",
@@ -28,4 +43,4 @@ export const siteConfig = {
       : EndpointType.DIRECT_API) ?? EndpointType.DIRECT_API,
 } as const;
 
-export type SiteConfig = typeof siteConfig;
+// export type SiteConfig = typeof siteConfig;
