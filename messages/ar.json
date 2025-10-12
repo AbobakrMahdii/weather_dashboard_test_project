@@ -16,7 +16,9 @@
     "back_home": "العودة للرئيسية",
     "current_locale": "اللغة الحالية",
     "logout": "تسجيل الخروج",
-    "profile": "الملف الشخصي"
+    "profile": "الملف الشخصي",
+    "appName": "لوحة الطقس",
+    "appTagline": "تحديثات الطقس في الوقت الفعلي"
   },
   "theme": {
     "light": "فاتح",
@@ -57,5 +59,51 @@
     "notFound": "الصفحة غير موجودة",
     "unauthorized": "وصول غير مصرح به",
     "network": "حدث خطأ في الشبكة"
+  },
+  "weather": {
+    "dashboard": {
+      "title": "لوحة الطقس",
+      "subtitle": "احصل على تحديثات الطقس في الوقت الفعلي لأي موقع"
+    },
+    "search": {
+      "placeholder": "ابحث عن مدينة...",
+      "button": "بحث",
+      "useLocation": "استخدم موقعي",
+      "recentSearches": "عمليات البحث الأخيرة"
+    },
+    "details": {
+      "title": "تفاصيل الطقس",
+      "feelsLike": "يشعر كأنه",
+      "humidity": "الرطوبة",
+      "windSpeed": "سرعة الرياح",
+      "visibility": "الرؤية",
+      "pressure": "الضغط",
+      "uvIndex": "مؤشر الأشعة فوق البنفسجية",
+      "time": "الوقت",
+      "day": "نهار",
+      "night": "ليل",
+      "heatIndex": "مؤشر الحرارة",
+      "windDirection": "اتجاه الرياح"
+    },
+    "forecast": {
+      "title": "توقعات 7 أيام",
+      "today": "اليوم",
+      "hourly": "التوقعات بالساعة"
+    },
+    "errors": {
+      "general": {
+        "title": "حدث خطأ ما"
+      },
+      "network": {
+        "title": "لا يوجد اتصال بالإنترنت"
+      },
+      "notFound": {
+        "title": "لم يتم العثور على المدينة"
+      },
+      "apiLimit": {
+        "title": "تم الوصول إلى حد API"
+      },
+      "retryButton": "حاول مرة أخرى"
+    }
   }
 }

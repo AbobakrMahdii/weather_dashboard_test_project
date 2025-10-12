@@ -16,7 +16,9 @@
     "back_home": "Back to Home",
     "current_locale": "Current Language",
     "logout": "Logout",
-    "profile": "Profile"
+    "profile": "Profile",
+    "appName": "Weather Dashboard",
+    "appTagline": "Real-time weather updates"
   },
   "auth": {
     "login": "Login to your account",
@@ -57,5 +59,51 @@
   "network": {
     "online": "Back Online",
     "offline": "You are currently offline"
+  },
+  "weather": {
+    "dashboard": {
+      "title": "Weather Dashboard",
+      "subtitle": "Get real-time weather updates for any location"
+    },
+    "search": {
+      "placeholder": "Search for a city...",
+      "button": "Search",
+      "useLocation": "Use my location",
+      "recentSearches": "Recent Searches"
+    },
+    "details": {
+      "title": "Weather Details",
+      "feelsLike": "Feels like",
+      "humidity": "Humidity",
+      "windSpeed": "Wind Speed",
+      "visibility": "Visibility",
+      "pressure": "Pressure",
+      "uvIndex": "UV Index",
+      "time": "Time",
+      "day": "Day",
+      "night": "Night",
+      "heatIndex": "Heat Index",
+      "windDirection": "Wind Direction"
+    },
+    "forecast": {
+      "title": "7-Day Forecast",
+      "today": "Today",
+      "hourly": "Hourly Forecast"
+    },
+    "errors": {
+      "general": {
+        "title": "Something went wrong"
+      },
+      "network": {
+        "title": "No Internet Connection"
+      },
+      "notFound": {
+        "title": "City Not Found"
+      },
+      "apiLimit": {
+        "title": "API Limit Reached"
+      },
+      "retryButton": "Try Again"
+    }
   }
 }
