@@ -22,7 +22,8 @@ export const siteConfig: {
   defaultEndpointType: EndpointType;
 } = {
   name: process.env.NEXT_PUBLIC_APP_NAME || "Weather Dashboard",
-  description: "A weather dashboard application",
+  description:
+    "Real-time weather forecast dashboard with 7-day predictions, hourly updates, and beautiful weather animations. Get accurate weather information for any location worldwide.",
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
   url: process.env.NEXT_PUBLIC_APP_URL || "https://startub_template.com",
   apiBaseUrl:
