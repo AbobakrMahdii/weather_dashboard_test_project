@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
   // Enable server components by default
   reactStrictMode: true,
 
+  // Image optimization configuration
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.weatherapi.com",
+        pathname: "/**",
+      },
+    ],
+  },
+
   // Enable Turbopack for faster development builds
   experimental: {
     // Enable any experimental features if needed
