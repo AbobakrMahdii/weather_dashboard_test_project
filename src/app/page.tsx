@@ -35,18 +35,12 @@ export default function Home() {
           <h2 className="text-lg font-medium">{t("getting_started")}</h2>
           <ul className="mt-2 list-disc pl-6 space-y-1">
             <li>
-              <Link
-                href={appRoutes.LOGIN.path}
-                className="text-primary hover:underline"
-              >
+              <Link href="#" className="text-primary hover:underline">
                 {t("login_page")}
               </Link>
             </li>
             <li>
-              <Link
-                href={appRoutes.DASHBOARD.path}
-                className="text-primary hover:underline"
-              >
+              <Link href="#" className="text-primary hover:underline">
                 {t("dashboard")}
               </Link>
             </li>

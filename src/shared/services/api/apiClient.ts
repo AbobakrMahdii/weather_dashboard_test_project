@@ -1,8 +1,8 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { siteConfig } from "@/config/site";
-import { getCookie } from "@/lib/cookie";
+import { getCookie } from "@/shared/lib/cookie";
 import { COOKIE_NAMES } from "@/constants";
-import { EndpointType } from "@/types";
+import { EndpointType } from "@/shared/types";
 
 // Create a function to determine the base URL based on the endpoint type
 const getBaseUrl = (endpointType: EndpointType): string => {

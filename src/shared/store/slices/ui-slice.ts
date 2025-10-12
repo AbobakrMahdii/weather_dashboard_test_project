@@ -1,5 +1,5 @@
-import { uuid } from "@/lib/utils";
-import { NotificationType, Theme } from "@/types";
+import { uuid } from "@/shared/lib/utils";
+import { NotificationType, Theme } from "@/shared/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define the UI state

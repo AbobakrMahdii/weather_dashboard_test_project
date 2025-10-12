@@ -1,5 +1,3 @@
-"use client";
-
 import { useCallback, useState } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import {
@@ -11,22 +9,24 @@ import { PAGINATION } from "@/constants";
 
 export function usePagination<T>({
   queryKey,
-  queryFn,
   defaultParams = {
     page: PAGINATION.DEFAULT_PAGE,
     perPage: PAGINATION.DEFAULT_PER_PAGE,
   },
   enabled = true,
-}: UsePaginationOptions<T>): UsePaginationResult<T> {
+  fetchData, // Accept a serializable fetchData function
+}: Omit<UsePaginationOptions<T>, "queryFn"> & {
+  fetchData: (params: PaginationParams) => Promise<any>;
+}): UsePaginationResult<T> {
   const [params, setParams] = useState<PaginationParams>(defaultParams);
 
   // Create the query function that accepts a page parameter
-  const fetchData = useCallback(
+  const queryFunction = useCallback(
     async ({ pageParam = PAGINATION.DEFAULT_PAGE }) => {
       const queryParams = { ...params, page: pageParam };
-      return await queryFn(queryParams);
+      return await fetchData(queryParams);
     },
-    [params, queryFn]
+    [params, fetchData]
   );
 
   // Set up the infinite query
@@ -41,7 +41,7 @@ export function usePagination<T>({
     refetch,
   } = useInfiniteQuery({
     queryKey: [...queryKey, params],
-    queryFn: fetchData,
+    queryFn: queryFunction,
     initialPageParam: PAGINATION.DEFAULT_PAGE,
     getNextPageParam: (lastPage) => {
       const { currentPage, lastPage: maxPage } = lastPage.meta;
