@@ -72,6 +72,15 @@ const createAxiosInstance = (
   // Response interceptor
   instance.interceptors.response.use(
     (response: AxiosResponse) => {
+      // Log successful responses in development mode
+      if (!siteConfig.isProduction) {
+        console.group("✅ API Success");
+        console.log("📍 Endpoint:", response.config.url);
+        console.log("🔢 Status:", response.status);
+        console.log("📦 Response Data:", response.data);
+        console.groupEnd();
+      }
+
       return response;
     },
     async (error: AxiosError) => {
