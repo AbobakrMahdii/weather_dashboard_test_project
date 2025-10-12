@@ -1,20 +1,76 @@
-# Startup Template NextJS Application
+# 🌦️ Weather Dashboard - React Take-Home Exam
 
-This is a feature-rich Next.js application built with TypeScript, Redux, and TanStack Query. The application follows a feature-based architecture with a focus on maintainability and separation of concerns.
+A modern, fully-featured weather dashboard application built with **Next.js 15**, **React 19**, **TypeScript**, and **WeatherAPI.com**. This project showcases professional development practices, advanced animations, and a responsive design.
 
-## Architecture Overview
+![Weather Dashboard](https://img.shields.io/badge/Next.js-15.3.4-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)
 
-The application is structured using a feature-based architecture, where code is organized around business domains rather than technical concerns. This architecture provides:
+## 📋 Table of Contents
 
-1. **Better Isolation**: Each feature is self-contained with its own components, services, hooks, and types.
-2. **Improved Maintainability**: Changes to one feature are less likely to affect others.
-3. **Clear API Boundaries**: Features expose clear public APIs through their index.ts files.
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [API Configuration](#-api-configuration)
+- [Project Structure](#-project-structure)
+- [Design Decisions](#-design-decisions)
+- [Challenges & Solutions](#-challenges--solutions)
+- [Time Estimation](#-time-estimation)
+
+## ✨ Features
+
+### Core Features (Required)
+
+- ✅ **City Search**: Search for weather by city name with real-time results
+- ✅ **Current Weather Display**:
+  - Temperature (with unit toggle)
+  - City name and country
+  - Weather description with icon
+  - Humidity percentage
+  - Wind speed and direction
+- ✅ **Loading States**: Smooth skeleton loaders during data fetching
+- ✅ **Error Handling**:
+  - City not found errors
+  - Network error detection
+  - API rate limit handling
+  - User-friendly error messages
+- ✅ **TypeScript**: Fully typed components, hooks, and API responses
+
+### Bonus Features (Implemented)
+
+- ⭐ **5-Day Weather Forecast**:
+  - Daily temperature ranges
+  - Weather conditions
+  - Hourly breakdown (every 3 hours)
+- 🌍 **Geolocation**:
+  - "Use My Location" feature
+  - Browser geolocation API integration
+  - Permission handling
+- 🌡️ **Temperature Unit Toggle**:
+  - Celsius/Fahrenheit switcher
+  - Persisted preference via Redux
+- 💾 **Recent Searches**:
+  - localStorage persistence
+  - Animated dropdown with delete functionality
+  - Maximum 10 recent searches
+- 📱 **Responsive Design**:
+  - Mobile-first approach
+  - Tablet and desktop optimized
+  - Horizontal scroll for forecast cards
+- 🎨 **Advanced Features**:
+  - Dynamic weather backgrounds (changes based on conditions)
+  - Animated weather particles (rain, snow, sun rays)
+  - Framer Motion animations throughout
+  - Theme support (light/dark mode)
+  - Bilingual support (English/Arabic with RTL)
+  - Extended weather details (UV index, visibility, pressure, etc.)
 
 ## Directory Structure
 
 ```
 src/
-├── app/                     # Next.js App Router 
+├── app/                     # Next.js App Router
 ├── components/              # Shared UI components
 ├── config/                  # App configuration
 ├── constants/               # Global constants
@@ -38,7 +94,7 @@ src/
 ├── providers/               # React context providers
 ├── routes/                  # Route definitions & guards
 ├── services/                # Shared services
-│   ├── api/                 # API integration 
+│   ├── api/                 # API integration
 │   │   ├── apiClient.ts     # Base Axios configuration
 │   │   ├── errorHandling.ts # Centralized error handling
 │   │   ├── queryService.ts  # TanStack Query integration
