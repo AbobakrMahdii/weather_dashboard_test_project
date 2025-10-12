@@ -1,5 +1,6 @@
 import { uuid } from "@/shared/lib/utils";
 import { NotificationType, Theme } from "@/shared/types";
+import { TemperatureUnit, RecentSearch } from "@/features/weather/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define the UI state
@@ -10,6 +11,11 @@ export interface UiState {
   isMobileMenuOpen: boolean;
   activeModal: string | null;
   notifications: Notification[];
+  // Weather preferences
+  temperatureUnit: TemperatureUnit;
+  lastSearchedCity: string | null;
+  favoriteLocations: string[];
+  recentSearches: RecentSearch[];
 }
 
 // Define the notification type
@@ -29,6 +35,11 @@ const initialState: UiState = {
   isMobileMenuOpen: false,
   activeModal: null,
   notifications: [],
+  // Weather preferences
+  temperatureUnit: "metric",
+  lastSearchedCity: null,
+  favoriteLocations: [],
+  recentSearches: [],
 };
 
 // Create the UI slice
@@ -105,6 +116,50 @@ const uiSlice = createSlice({
     clearNotifications: (state) => {
       state.notifications = [];
     },
+
+    // Weather-related actions
+    setTemperatureUnit: (state, action: PayloadAction<TemperatureUnit>) => {
+      state.temperatureUnit = action.payload;
+    },
+
+    setLastSearchedCity: (state, action: PayloadAction<string | null>) => {
+      state.lastSearchedCity = action.payload;
+    },
+
+    addFavoriteLocation: (state, action: PayloadAction<string>) => {
+      if (!state.favoriteLocations.includes(action.payload)) {
+        state.favoriteLocations.push(action.payload);
+      }
+    },
+
+    removeFavoriteLocation: (state, action: PayloadAction<string>) => {
+      state.favoriteLocations = state.favoriteLocations.filter(
+        (location) => location !== action.payload
+      );
+    },
+
+    addRecentSearch: (state, action: PayloadAction<RecentSearch>) => {
+      // Remove duplicate if exists
+      state.recentSearches = state.recentSearches.filter(
+        (search) => search.city !== action.payload.city
+      );
+      // Add to beginning
+      state.recentSearches.unshift(action.payload);
+      // Keep only last 10
+      if (state.recentSearches.length > 10) {
+        state.recentSearches = state.recentSearches.slice(0, 10);
+      }
+    },
+
+    removeRecentSearch: (state, action: PayloadAction<string>) => {
+      state.recentSearches = state.recentSearches.filter(
+        (search) => search.city !== action.payload
+      );
+    },
+
+    clearRecentSearches: (state) => {
+      state.recentSearches = [];
+    },
   },
 });
 
@@ -121,6 +176,13 @@ export const {
   removeNotification,
   markNotificationAsRead,
   clearNotifications,
+  setTemperatureUnit,
+  setLastSearchedCity,
+  addFavoriteLocation,
+  removeFavoriteLocation,
+  addRecentSearch,
+  removeRecentSearch,
+  clearRecentSearches,
 } = uiSlice.actions;
 
 // Export the reducer
