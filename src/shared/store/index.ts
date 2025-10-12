@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import uiReducer from "./slices/ui-slice";
+import { siteConfig } from "@/config/site";
 
 // Define the root reducer with all slice reducers
 const rootReducer = combineReducers({
@@ -11,7 +12,7 @@ const rootReducer = combineReducers({
 export const store = configureStore({
   reducer: rootReducer,
   // Enable Redux DevTools in development
-  devTools: process.env.NODE_ENV !== "production",
+  devTools: !siteConfig.isProduction,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
