@@ -1,5 +1,6 @@
 "use client";
 
+import { siteConfig } from "@/config/site";
 import "@/shared/styles/globals.css";
 
 export default function GlobalError({
@@ -16,7 +17,7 @@ export default function GlobalError({
           <h1 className="text-6xl font-bold text-destructive">Error</h1>
           <h2 className="mt-4 text-2xl font-semibold">Something went wrong</h2>
           <p className="mt-2 text-muted-foreground">
-            {process.env.NODE_ENV === "development"
+            {!siteConfig.isProduction
               ? error.message
               : "An unexpected error has occurred."}
           </p>
