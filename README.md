@@ -39,7 +39,7 @@ A modern, fully-featured weather dashboard application built with **Next.js 15**
 
 ### Bonus Features (Implemented)
 
-- ⭐ **5-Day Weather Forecast**:
+- ⭐ **7-Day Weather Forecast**:
   - Daily temperature ranges
   - Weather conditions
   - Hourly breakdown (every 3 hours)
