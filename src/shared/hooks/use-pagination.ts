@@ -16,7 +16,14 @@ export function usePagination<T>({
   enabled = true,
   fetchData, // Accept a serializable fetchData function
 }: Omit<UsePaginationOptions<T>, "queryFn"> & {
-  fetchData: (params: PaginationParams) => Promise<any>;
+  fetchData: (params: PaginationParams) => Promise<{
+    response: T[];
+    meta: {
+      currentPage: number;
+      lastPage: number;
+      [key: string]: unknown;
+    };
+  }>;
 }): UsePaginationResult<T> {
   const [params, setParams] = useState<PaginationParams>(defaultParams);
 
