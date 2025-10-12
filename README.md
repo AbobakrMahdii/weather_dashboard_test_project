@@ -137,6 +137,7 @@ src/
 2. Install dependencies with `npm install`
 3. Run the development server with `npm run dev`
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. Create a new .env file then take it's content from the .env.template with your own values for the api key & domain
 
 ## Development Guidelines
 
