@@ -28,6 +28,12 @@ export const appRoutes: Record<keyof typeof ROUTES, RouteConfig> = {
     title: "Home",
     description: `Welcome to ${siteConfig.name}`,
   },
+  WEATHER: {
+    path: ROUTES.WEATHER,
+    requiresAuth: false,
+    title: "Weather",
+    description: `Check the weather in your area`,
+  },
 };
 
 /**
@@ -50,6 +56,7 @@ export const routeUtils = {
    * @param callbackUrl Where to redirect after login
    * @returns The full login URL with callback
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   getLoginUrl: (callbackUrl?: string): string => {
     // if (!callbackUrl) return login_path_from_appRoutes;
     // return `${login_path_from_appRoutes}?callbackUrl=${encodeURIComponent(
