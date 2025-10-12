@@ -21,14 +21,14 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   };
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div className={cn("flex items-center gap-1", className)}>
       {siteConfig.locales.map((lang) => (
         <button
           key={lang}
           type="button"
           onClick={() => switchLanguage(lang)}
           className={cn(
-            "px-3 py-1 rounded text-sm font-medium transition-colors",
+            "px-2 py-1 sm:px-3 sm:py-1.5 rounded text-xs sm:text-sm font-medium transition-colors",
             locale === lang
               ? CSS_CLASSES.ACTIVE_BUTTON
               : CSS_CLASSES.INACTIVE_BUTTON

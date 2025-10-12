@@ -30,12 +30,12 @@ export function ThemeSwitcher({ className }: { className?: string }) {
   }
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div className={cn("flex items-center gap-1", className)}>
       <button
         type="button"
         onClick={() => setTheme("light")}
         className={cn(
-          "rounded-md p-2 transition-colors",
+          "rounded-md p-1.5 sm:p-2 transition-colors",
           theme === "light"
             ? CSS_CLASSES.ACTIVE_BUTTON
             : CSS_CLASSES.INACTIVE_BUTTON_PRIMARY_HOVER
@@ -50,7 +50,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
         >
           <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
           <path d="M12 2v2" />
@@ -68,7 +68,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
         type="button"
         onClick={() => setTheme("dark")}
         className={cn(
-          "rounded-md p-2 transition-colors",
+          "rounded-md p-1.5 sm:p-2 transition-colors",
           theme === "dark"
             ? CSS_CLASSES.ACTIVE_BUTTON
             : CSS_CLASSES.INACTIVE_BUTTON_PRIMARY_HOVER
@@ -83,7 +83,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
         >
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
         </svg>
@@ -93,7 +93,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
         type="button"
         onClick={() => setTheme("system")}
         className={cn(
-          "rounded-md p-2 transition-colors",
+          "rounded-md p-1.5 sm:p-2 transition-colors",
           theme === "system"
             ? CSS_CLASSES.ACTIVE_BUTTON
             : CSS_CLASSES.INACTIVE_BUTTON_PRIMARY_HOVER
@@ -108,7 +108,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
         >
           <rect width="20" height="14" x="2" y="3" rx="2" />
           <line x1="8" x2="16" y1="21" y2="21" />
