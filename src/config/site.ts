@@ -20,6 +20,7 @@ export const siteConfig: {
   locales: string[];
   defaultTimeZone: string;
   defaultEndpointType: EndpointType;
+  isProduction: boolean;
 } = {
   name: process.env.NEXT_PUBLIC_APP_NAME || "Weather Dashboard",
   description:
@@ -42,6 +43,7 @@ export const siteConfig: {
     (process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT == "app_api"
       ? EndpointType.APP_API
       : EndpointType.DIRECT_API) ?? EndpointType.DIRECT_API,
+  isProduction: process.env.NODE_ENV === "production",
 } as const;
 
 // export type SiteConfig = typeof siteConfig;
