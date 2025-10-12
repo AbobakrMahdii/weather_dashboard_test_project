@@ -107,3 +107,63 @@ export const AUTH = {
   DEFAULT_ROLE: "user",
   SESSION_DURATION: 86400 * 1000, // 1 day in milliseconds
 };
+
+/**
+ * Weather related constants
+ */
+export const WEATHER = {
+  UNITS: {
+    CELSIUS: "metric",
+    FAHRENHEIT: "imperial",
+  },
+  DEFAULT_UNIT: "metric" as "metric" | "imperial",
+  DEFAULT_CITY: "Yemen",
+  MAX_RECENT_SEARCHES: 10,
+  FORECAST_DAYS: 7,
+  ICONS_MAP: {
+    "01d": "☀️", // Clear sky day
+    "01n": "🌙", // Clear sky night
+    "02d": "⛅", // Few clouds day
+    "02n": "☁️", // Few clouds night
+    "03d": "☁️", // Scattered clouds
+    "03n": "☁️",
+    "04d": "☁️", // Broken clouds
+    "04n": "☁️",
+    "09d": "🌧️", // Shower rain
+    "09n": "🌧️",
+    "10d": "🌦️", // Rain day
+    "10n": "🌧️", // Rain night
+    "11d": "⛈️", // Thunderstorm
+    "11n": "⛈️",
+    "13d": "❄️", // Snow
+    "13n": "❄️",
+    "50d": "🌫️", // Mist
+    "50n": "🌫️",
+  },
+  CONDITION_BACKGROUNDS: {
+    clear: {
+      day: ["#56CCF2", "#2F80ED"],
+      night: ["#0F2027", "#203A43", "#2C5364"],
+    },
+    clouds: {
+      day: ["#bdc3c7", "#2c3e50"],
+      night: ["#232526", "#414345"],
+    },
+    rain: {
+      day: ["#667db6", "#667db6", "#0082c8"],
+      night: ["#283048", "#859398"],
+    },
+    snow: {
+      day: ["#E0EAFC", "#CFDEF3"],
+      night: ["#2C3E50", "#34495E"],
+    },
+    thunderstorm: {
+      day: ["#4B79A1", "#283E51"],
+      night: ["#141E30", "#243B55"],
+    },
+    mist: {
+      day: ["#B7B8B6", "#50565E"],
+      night: ["#1C1C1C", "#383838"],
+    },
+  },
+};
