@@ -7,6 +7,7 @@ import {
   ServerError,
   ValidationError,
 } from "../custom-errors";
+import { siteConfig } from "@/config/site";
 
 export type ErrorResponse = {
   message: string;
@@ -30,6 +31,22 @@ export class ErrorHandler {
    * Handle any error and return a standardized error response
    */
   static handle(error: unknown): ErrorResponse {
+    // Log detailed error information in development mode
+    if (!siteConfig.isProduction) {
+      console.group("🔴 API Error Details");
+
+      if (error instanceof AxiosError) {
+        console.log("📍 Endpoint:", error.config?.url);
+        console.log("🔢 Status Code:", error.response?.status);
+        console.log("📦 Response Data:", error.response?.data);
+        console.log("📋 Full Error:", error);
+      } else {
+        console.log("📋 Error:", error);
+      }
+
+      console.groupEnd();
+    }
+
     if (typeof window !== "undefined" && !window.navigator.onLine) {
       return {
         message:
@@ -56,12 +73,42 @@ export class ErrorHandler {
         };
       }
 
+      // Extract error message from various possible response structures
+      // Handles: { error: { message: "..." } }, { message: "..." }, or plain text
+      const getErrorMessage = (defaultMessage: string): string => {
+        const responseData = error.response?.data;
+        if (responseData?.error?.message) {
+          return responseData.error.message; // WeatherAPI format
+        }
+        if (responseData?.message) {
+          return responseData.message; // Standard format
+        }
+        if (typeof responseData === "string") {
+          return responseData; // Plain text
+        }
+        return defaultMessage;
+      };
+
+      // Handle bad request errors (400) - common for invalid locations in WeatherAPI
+      if (statusCode === 400) {
+        return {
+          message: getErrorMessage(
+            "Bad request. Please check your search input."
+          ),
+          statusCode,
+          isNetworkError: false,
+          isAuthError: false,
+          isValidationError: false,
+          isServerError: false,
+        };
+      }
+
       // Handle unauthorized errors
       if (statusCode === 401) {
         return {
-          message:
-            error.response?.data?.message ||
-            "Authentication failed. Please login again.",
+          message: getErrorMessage(
+            "Authentication failed. Please login again."
+          ),
           statusCode,
           isNetworkError: false,
           isAuthError: true,
@@ -73,9 +120,9 @@ export class ErrorHandler {
       // Handle forbidden errors
       if (statusCode === 403) {
         return {
-          message:
-            error.response?.data?.message ||
-            "You don't have permission to access this resource.",
+          message: getErrorMessage(
+            "You don't have permission to access this resource."
+          ),
           statusCode,
           isNetworkError: false,
           isAuthError: false,
@@ -87,9 +134,7 @@ export class ErrorHandler {
       // Handle not found errors
       if (statusCode === 404) {
         return {
-          message:
-            error.response?.data?.message ||
-            "The requested resource was not found.",
+          message: getErrorMessage("The requested resource was not found."),
           statusCode,
           isNetworkError: false,
           isAuthError: false,
@@ -101,9 +146,9 @@ export class ErrorHandler {
       // Handle validation errors
       if (statusCode === 422) {
         return {
-          message:
-            error.response?.data?.message ||
-            "Validation failed. Please check your input.",
+          message: getErrorMessage(
+            "Validation failed. Please check your input."
+          ),
           statusCode,
           validationErrors: error.response?.data?.errors,
           isNetworkError: false,
@@ -116,9 +161,7 @@ export class ErrorHandler {
       // Handle server errors
       if (statusCode >= 500) {
         return {
-          message:
-            error.response?.data?.message ||
-            "An unexpected server error occurred.",
+          message: getErrorMessage("An unexpected server error occurred."),
           statusCode,
           isNetworkError: false,
           isAuthError: false,
@@ -129,10 +172,9 @@ export class ErrorHandler {
 
       // Handle other HTTP errors
       return {
-        message:
-          error.response?.data?.message ||
-          error.message ||
-          "An unexpected error occurred.",
+        message: getErrorMessage(
+          error.message || "An unexpected error occurred."
+        ),
         statusCode,
         isNetworkError: false,
         isAuthError: false,
